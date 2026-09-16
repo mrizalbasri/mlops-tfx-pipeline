@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+    restart: always
+
+  prometheus:
+    build:
+      context: ./monitoring
+      dockerfile: Dockerfile
+    ports:
+      - "9090:9090"
+    depends_on:
+      - app
+    restart: always
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+    restart: always

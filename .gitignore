@@ -18,7 +18,6 @@ tfx_metadata/
 metadata.db
 *.db
 pipeline_output/
-serving_model_dir/
 
 # Environment variables and secrets
 .env
