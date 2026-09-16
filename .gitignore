@@ -1,0 +1,34 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# TFX / Pipeline artifacts and metadata
+tfx_metadata/
+metadata.db
+*.db
+pipeline_output/
+serving_model_dir/
+
+# Environment variables and secrets
+.env
+.env.*
+*.env
+*.pem
+*.key
+credentials.json
+service-account*.json
+
+# OS specific
+.DS_Store
+Thumbs.db
