@@ -1,25 +1,26 @@
-# Production Dockerfile for ML Serving API
 FROM python:3.10-slim
 
 WORKDIR /app
 
-# Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PORT=8000
 
-# Install dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/uv
 
-# Copy application assets
+RUN uv pip install --system --no-cache \
+    "tensorflow-cpu==2.13.1" \
+    "fastapi" \
+    "uvicorn" \
+    "prometheus-client" \
+    "pydantic"
+
 COPY modules/ modules/
 COPY serving_model_dir/ serving_model_dir/
 COPY app.py .
 COPY sample_request.json .
+COPY requirements.txt .
 
-# Expose HTTP port
 EXPOSE 8000
 
-# Run API server using uvicorn
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["sh", "-c", "uvicorn app:app --host 0.0.0.0 --port ${PORT:-8000}"]

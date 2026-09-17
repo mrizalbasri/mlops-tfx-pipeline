@@ -99,7 +99,7 @@ Berdasarkan hasil pelatihan dan evaluasi melalui TFX Pipeline dengan Apache Beam
 Sistem model serving dikemas ke dalam kontainer **Docker** independen dan siap dijalankan di berbagai platform komputasi cloud:
 * **Framework Serving:** **FastAPI** + **Uvicorn** (asynchronous, performa tinggi, validasi skema otomatis, dan integrasi Swagger UI).
 * **Containerization:** Berbasis image `python:3.10-slim` dengan konfigurasi `Dockerfile` produksi.
-* **Cloud Platform:** **Railway** / **Render** / **Cloud Container Registry**.
+* **Cloud Platform:** **Heroku Container Registry** / **Railway** / **Docker Container**.
 * **Model Loading:** Menggunakan `tf.saved_model.load()` yang secara dinamis memuat artefak `SavedModel` versi terbaru dari hasil ekspor TFX Pusher.
 * **Endpoint yang Disediakan:**
   * `GET /`: Informasi umum layanan API dan status model.
@@ -111,8 +111,9 @@ Sistem model serving dikemas ke dalam kontainer **Docker** independen dan siap d
 ---
 
 ## 7. Tautan Web App Model Serving
-* **URL Cloud Serving:** `https://rizalbasri-pipeline-production.up.railway.app`
-* **URL Lokal:** `http://localhost:8000`
+* **URL Cloud Serving (Heroku):** `https://rizalbasri-pipeline.herokuapp.com`
+* **URL Cloud Serving (Railway Alternative):** `https://rizalbasri-pipeline-production.up.railway.app`
+* **URL Lokal Container:** `http://localhost:8000`
 * **Dokumentasi API Swagger UI:** `http://localhost:8000/docs`
 * **Endpoint Prediksi:** `http://localhost:8000/predict`
 * **Endpoint Prometheus Metrics:** `http://localhost:8000/metrics`
