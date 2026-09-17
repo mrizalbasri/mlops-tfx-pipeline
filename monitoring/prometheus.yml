@@ -1,12 +1,13 @@
 global:
-  scrape_interval: 5s
-  evaluation_interval: 5s
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    monitor: "tf-serving-monitor"
 
 scrape_configs:
-  - job_name: 'ml_serving_api'
-    metrics_path: '/metrics'
+  - job_name: "prometheus"
+    scrape_interval: 5s
+    scheme: https
+    metrics_path: /monitoring/prometheus/metrics
     static_configs:
-      - targets: ['app:8000']
-        labels:
-          service: 'heart-disease-prediction'
-          pipeline: 'rizalbasri-pipeline'
+      - targets: ['rizalbasri-pipeline-45c5ab3fd207.herokuapp.com']

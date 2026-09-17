@@ -1,3 +1,23 @@
+# Submission 2: Membangun Machine Learning Pipeline Menggunakan TensorFlow Extended (TFX)
+Nama: Mochammad Rizal Basri
+
+Username dicoding: rizalbasri
+
+| | Deskripsi |
+| ----------- | ----------- |
+| Dataset | [Heart Disease Dataset](https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset) (UCI Cleveland Database). Terdiri dari 303 data pasien dengan 13 atribut klinis dan 1 label target biner indikasi penyakit jantung. |
+| Masalah | Penyakit kardiovaskular merupakan penyebab kematian utama secara global. Diagnosis manual sering kali rentan keterlambatan dan perbedaan interpretasi klinis. Diperlukan sistem machine learning otomatis, reproducible, dan siap produksi untuk deteksi dini risiko penyakit jantung. |
+| Solusi machine learning | Mengembangkan pipeline machine learning end-to-end berbasis TensorFlow Extended (TFX) yang diorkestrasi menggunakan Apache Beam. Pipeline mencakup validasi data otomatis, preprocessing TFT untuk mencegah training-serving skew, pelatihan deep neural network, evaluasi TFMA dengan validasi baseline (status BLESSED), dan model serving dengan TensorFlow Serving. |
+| Metode pengolahan | TensorFlow Transform (TFT) dalam `modules/transform.py`: Normalisasi z-score (`tft.scale_to_z_score`) pada seluruh fitur numerik (age, trestbps, chol, thalach, oldpeak), konversi fitur kategorikal ke tf.float32 (sex, cp, fbs, restecg, exang, slope, ca, thal), dan konversi target ke tf.int64. Seluruh graph preprocessing diekspor bersama model ke serving signature. |
+| Arsitektur model | Deep Neural Network (DNN) berbasis Keras dalam `modules/trainer.py`: Multi-input layer digabungkan dengan concatenation layer, diteruskan ke Hidden Layer 1 (64 unit ReLU, Dropout 0.2), Hidden Layer 2 (32 unit ReLU, Dropout 0.1), dan Output Layer (1 unit Sigmoid). Menggunakan Adam optimizer dan Binary Crossentropy loss. |
+| Metrik evaluasi | Evaluasi performa model dilakukan dengan TensorFlow Model Analysis (TFMA) menggunakan metrik Binary Accuracy (threshold minimal 0.5) dan Area Under ROC Curve (AUC). Dilengkapi validasi komparasi ChangeThreshold terhadap baseline model (status BLESSED). |
+| Performa model | Training Accuracy: 95.56%, Training AUC: 0.9885, Validation Accuracy: 80.47%, Validation AUC: 0.8641. Evaluator TFMA menyatakan model BLESSED dan layak masuk tahap produksi. |
+| Opsi deployment | Disajikan menggunakan **TensorFlow Serving (TF Serving)** berbasis Docker container di cloud environment Heroku Container Registry (`tensorflow/serving:latest`). |
+| Web app URL | `https://rizalbasri-pipeline-45c5ab3fd207.herokuapp.com/v1/models/heart-disease-model` |
+| Monitoring | Prometheus memantau metrik performa TF Serving secara real-time via endpoint /monitoring/prometheus/metrics dan divisualisasikan melalui Grafana dashboard. |
+
+---
+
 # Proyek Pengembangan dan Pengoperasian Sistem Machine Learning
 **Dicoding Submission - Machine Learning Operations (MLOps)**
 

@@ -9,9 +9,10 @@ from modules.components import init_components
 
 # Pipeline Configurations
 PIPELINE_NAME = "rizalbasri-pipeline"
+PIPELINE_ROOT = "rizalbasri-pipeline"
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
-OUTPUT_DIR = os.path.join(BASE_DIR, "pipeline_output")
+OUTPUT_DIR = os.path.join(BASE_DIR, PIPELINE_ROOT)
 METADATA_DIR = os.path.join(BASE_DIR, "tfx_metadata")
 SERVING_DIR = os.path.join(BASE_DIR, "serving_model_dir")
 

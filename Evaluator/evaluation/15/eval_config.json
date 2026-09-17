@@ -1,0 +1,41 @@
+{
+  "evalConfig": {
+    "modelSpecs": [
+      {
+        "labelKey": "target"
+      }
+    ],
+    "slicingSpecs": [
+      {}
+    ],
+    "metricsSpecs": [
+      {
+        "metrics": [
+          {
+            "className": "ExampleCount"
+          },
+          {
+            "className": "BinaryAccuracy",
+            "threshold": {
+              "valueThreshold": {
+                "lowerBound": 0.5
+              }
+            }
+          },
+          {
+            "className": "AUC"
+          }
+        ],
+        "modelNames": [
+          ""
+        ]
+      }
+    ]
+  },
+  "version": "0.45.0",
+  "dataLocation": "<user provided PCollection>",
+  "fileFormat": "<unknown>",
+  "modelLocations": {
+    "": "D:\\Coding\\dicoding\\rizalbasri-pipeline\\pipeline_output\\Trainer\\model\\14\\Format-Serving"
+  }
+}
