@@ -111,11 +111,11 @@ Sistem model serving dikemas ke dalam kontainer **Docker** independen dan siap d
 ---
 
 ## 7. Tautan Web App Model Serving
-* **URL Cloud Serving (Heroku):** `https://rizalbasri-pipeline.herokuapp.com`
+* **URL Cloud Serving (Heroku):** `https://rizalbasri-pipeline-45c5ab3fd207.herokuapp.com` (atau `https://rizalbasri-pipeline.herokuapp.com`)
 * **URL Lokal Container:** `http://localhost:8000`
-* **Dokumentasi API Swagger UI:** `https://rizalbasri-pipeline.herokuapp.com/docs` (atau `http://localhost:8000/docs`)
-* **Endpoint Prediksi:** `https://rizalbasri-pipeline.herokuapp.com/predict`
-* **Endpoint Prometheus Metrics:** `https://rizalbasri-pipeline.herokuapp.com/metrics`
+* **Dokumentasi API Swagger UI:** `https://rizalbasri-pipeline-45c5ab3fd207.herokuapp.com/docs` (atau `http://localhost:8000/docs`)
+* **Endpoint Prediksi:** `https://rizalbasri-pipeline-45c5ab3fd207.herokuapp.com/predict`
+* **Endpoint Prometheus Metrics:** `https://rizalbasri-pipeline-45c5ab3fd207.herokuapp.com/metrics`
 
 ---
 
