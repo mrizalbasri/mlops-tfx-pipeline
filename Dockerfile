@@ -12,7 +12,6 @@ env \n\
 tensorflow_model_server --port=8500 --rest_api_port=${PORT} \ 
 --model_name=${MODEL_NAME} --model_base_path=${MODEL_BASE_PATH}/${MODEL_NAME} \ 
 --monitoring_config_file=${MONITORING_CONFIG} \ 
---tensorflow_session_parallelism=1 \ 
 --tensorflow_intra_op_parallelism=1 \ 
 --tensorflow_inter_op_parallelism=1 \ 
 --grpc_max_threads=2 \ 
