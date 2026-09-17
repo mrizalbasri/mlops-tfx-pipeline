@@ -31,3 +31,7 @@ service-account*.json
 # OS specific
 .DS_Store
 Thumbs.db
+
+# Test & Tool Cache
+.pytest_cache/
+.kilo/
