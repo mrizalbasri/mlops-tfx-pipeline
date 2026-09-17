@@ -1,4 +1,4 @@
-FROM tensorflow/serving:latest
+FROM tensorflow/serving:2.14.1
 
 COPY ./serving_model_dir /models/heart-disease-model
 COPY ./monitoring /model_config
@@ -12,8 +12,5 @@ env \n\
 tensorflow_model_server --port=8500 --rest_api_port=${PORT} \ 
 --model_name=${MODEL_NAME} --model_base_path=${MODEL_BASE_PATH}/${MODEL_NAME} \ 
 --monitoring_config_file=${MONITORING_CONFIG} \ 
---tensorflow_intra_op_parallelism=1 \ 
---tensorflow_inter_op_parallelism=1 \ 
---grpc_max_threads=2 \ 
 "$@"' > /usr/bin/tf_serving_entrypoint.sh \
 && chmod +x /usr/bin/tf_serving_entrypoint.sh
